@@ -1,3 +1,6 @@
+import * as dotenv from "dotenv";
+dotenv.config();
+
 import { dirname } from "path";
 import * as http from "http";
 import express from "express";
@@ -35,8 +38,8 @@ app.use(
       ttl: 3600,
     }),
     secret: "palabrasecreta",
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
   })
 );
 
@@ -152,7 +155,7 @@ app.post("/register", async (req, res) => {
     first_name,
     last_name,
     email,
-    age: age,
+    age: +age,
     password,
     role: "user",
   };
