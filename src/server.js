@@ -228,6 +228,29 @@ app.get("/logout", (req, res) => {
   }, 2000);
 });
 
+app.get("/info", (req, res) => {
+  const mode = process.argv;
+  const cwd = process.cwd();
+  const pid = process.pid;
+  const title = process.title;
+  const versionNode = process.version;
+  const path = process.execPath;
+  const platform = process.platform;
+  const memory = process.memoryUsage();
+  const info = {
+    mode,
+    cwd,
+    pid,
+    title,
+    versionNode,
+    path,
+    platform,
+    memory,
+  };
+
+  res.send(info);
+});
+
 server.listen(PORT, () => {
   console.log(`Servidor escuchando puerto ${PORT}`);
 });
