@@ -25,7 +25,7 @@ const __dirname = dirname(__filename);
 const PORT = process.env.PORT || 8080;
 const products = new Container(knexSQlite, "product");
 const chatMessages = new Container(knexSQlite, "message");
-// const connection = mongoose.connect(process.env.MONGO_URI);
+const connection = mongoose.connect(process.env.MONGO_URI);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
