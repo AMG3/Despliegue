@@ -1,12 +1,12 @@
-import { knexMariaDB, knexSQlite } from "../options/db.js";
+import { knexSQlite } from "../options/db.js";
 
 export async function createProductTable() {
   try {
-    const isCreated = await knexMariaDB.schema.hasTable("product");
+    const isCreated = await knexSQlite.schema.hasTable("product");
     if (isCreated) {
       console.log("La tabla de productos ya se encuentra creada en la DB");
     } else {
-      await knexMariaDB.schema.createTable("product", (table) => {
+      await knexSQlite.schema.createTable("product", (table) => {
         table.increments("id").primary().notNullable(),
           table.string("title", 100).notNullable(),
           table.float("price").notNullable(),
